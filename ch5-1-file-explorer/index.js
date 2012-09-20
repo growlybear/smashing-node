@@ -2,6 +2,7 @@ var fs = require('fs')
   , stdin = process.stdin
   , stdout = process.stdout;
 
+
 fs.readdir(__dirname, function (err, files) {
     console.log('');
 
@@ -23,14 +24,28 @@ fs.readdir(__dirname, function (err, files) {
 
             i++;
             if (i === files.length) {
-                console.log('');
-                stdout.write('    ' + i + ' \033[33mEnter your choice: \033[39m');
-                stdin.resume();
-                stdin.setEncoding('utf-8');
+                read();
             } else {
                 file(i);
             }
         });
+    }
+
+    function read() {
+        console.log('');
+        stdout.write('    \033[33mEnter your choice: \033[39m');
+        stdin.resume();
+        stdin.setEncoding('utf-8');
+
+        stdin.on('data', option);
+    }
+
+    function option(data) {
+        if (!files[Number(data)]) {
+            stdout.write('    \033[31mEnter your choice: \033[39m');
+        } else {
+            stdin.pause();
+        }
     }
 
     file(0);
