@@ -18,7 +18,7 @@ fs.readdir(__dirname, function (err, files) {
             if (stat.isDirectory()) {
                 console.log('    ' + i + ' \033[36m' + filename + '/\033[39m');
             } else {
-                console.log('    ' + i + ' \033[90m' + filename + '/\033[39m')
+                console.log('    ' + i + ' \033[90m' + filename + '\033[39m')
             }
 
             i++;
