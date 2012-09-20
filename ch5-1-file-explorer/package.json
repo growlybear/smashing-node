@@ -1,0 +1,15 @@
+{
+  "author": "Michael Allan <michaelallan@optushome.com.au>",
+  "name": "ch5-1-file-explorer",
+  "description": "A command line file explorer",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
