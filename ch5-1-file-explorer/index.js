@@ -4,6 +4,8 @@ var fs = require('fs')
 
 
 fs.readdir(__dirname, function (err, files) {
+    var stats = [];
+
     console.log('');
 
     if (!files.length) {
@@ -16,6 +18,8 @@ fs.readdir(__dirname, function (err, files) {
         var filename = files[i];
 
         fs.stat(__dirname + '/' + filename, function (err, stat) {
+            stats[i] = stat;
+
             if (stat.isDirectory()) {
                 console.log('    ' + i + ' \033[36m' + filename + '/\033[39m');
             } else {
