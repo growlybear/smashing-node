@@ -48,7 +48,7 @@ fs.readdir(__dirname, function (err, files) {
             stdin.pause();
             fs.readFile(__dirname + '/' + filename, 'utf8', function (err, data) {
                 console.log('');
-                console.log(' \033[90m' + data.replace(/(.*/g, '    $1') + '\033[39m');
+                console.log('\033[90m' + data.replace(/(.*)/g, '    $1') + '\033[39m');
             });
         }
     }
