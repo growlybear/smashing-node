@@ -16,19 +16,19 @@ fs.readdir(__dirname, function (err, files) {
 
         fs.stat(__dirname + '/' + filename, function (err, stat) {
             if (stat.isDirectory()) {
-                console.log('    ' + i + ' \033[36m' + filename + '/\033[39m\n');
+                console.log('    ' + i + ' \033[36m' + filename + '/\033[39m');
             } else {
-                console.log('    ' + i + ' \033[90m' + filename + '/\033[39m\n')
+                console.log('    ' + i + ' \033[90m' + filename + '/\033[39m')
             }
 
             i++;
             if (i === files.length) {
                 console.log('');
                 stdout.write('    ' + i + ' \033[33mEnter your choice: \033[39m');
-                stdout.resume();
+                stdin.resume();
                 stdin.setEncoding('utf-8');
             } else {
-                file[i];
+                file(i);
             }
         });
     }
