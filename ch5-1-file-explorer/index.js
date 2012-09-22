@@ -3,7 +3,7 @@ var fs = require('fs')
   , stdout = process.stdout;
 
 
-fs.readdir(__dirname, function (err, files) {
+fs.readdir(process.cwd(), function (err, files) {
     var stats = [];
 
     console.log('');
@@ -17,7 +17,7 @@ fs.readdir(__dirname, function (err, files) {
     function file (i) {
         var filename = files[i];
 
-        fs.stat(__dirname + '/' + filename, function (err, stat) {
+        fs.stat(process.cwd() + '/' + filename, function (err, stat) {
             stats[i] = stat;
 
             if (stat.isDirectory()) {
@@ -58,7 +58,7 @@ fs.readdir(__dirname, function (err, files) {
                 });
                 console.log('');
             } else {
-                fs.readFile(__dirname + '/' + filename, 'utf8', function (err, data) {
+                fs.readFile(process.cwd() + '/' + filename, 'utf8', function (err, data) {
                     console.log('');
                     console.log('\033[90m' + data.replace(/(.*)/g, '    $1') + '\033[39m');
                 });
