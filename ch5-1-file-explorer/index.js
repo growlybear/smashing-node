@@ -50,10 +50,19 @@ fs.readdir(__dirname, function (err, files) {
             stdout.write('    \033[31mEnter your choice: \033[39m');
         } else {
             stdin.pause();
-            fs.readFile(__dirname + '/' + filename, 'utf8', function (err, data) {
+            if (stats[Number(data)].isDirectory()) {
                 console.log('');
-                console.log('\033[90m' + data.replace(/(.*)/g, '    $1') + '\033[39m');
-            });
+                console.log('    (' + files.length + ' files)');
+                files.forEach(function (file) {
+                    console.log('    -  ' + file);
+                });
+                console.log('');
+            } else {
+                fs.readFile(__dirname + '/' + filename, 'utf8', function (err, data) {
+                    console.log('');
+                    console.log('\033[90m' + data.replace(/(.*)/g, '    $1') + '\033[39m');
+                });
+            }
         }
     }
 
